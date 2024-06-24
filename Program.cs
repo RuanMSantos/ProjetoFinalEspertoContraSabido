@@ -1,9 +1,19 @@
 ﻿Console.Clear();
 
+int alimentosDistribuidos = 0;
+
 Console.WriteLine("--- Esperto Contra Sabido ---\n");
 
 Console.Write("Quantos alimentos serão distribuídos? ");
-int alimentosDistribuidos = Convert.ToInt32(Console.ReadLine());
+string AlimentosTexto = Console.ReadLine()!;
+
+if (!int.TryParse(AlimentosTexto, out alimentosDistribuidos))
+{
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine("Impossível converter em número.");
+    Console.ResetColor();
+    return;
+}
 
 if (alimentosDistribuidos <= 0) 
 {
@@ -13,7 +23,7 @@ if (alimentosDistribuidos <= 0)
 Console.WriteLine();
 
 int alimentosRestantes = alimentosDistribuidos;
-int picaPau = 0, raposinha = 0;
+int raposinha = 0, picaPau = 0;
 
 int AlimentoParaVoce = 0, AlimentoParaMim = 0;
 
